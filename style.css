@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: url('images/bg.jpg') center/cover no-repeat;
+  text-align: center;
+  overflow-x: hidden;
+  color: #fff;
+}
+
+/* TITLE */
+.intro-text {
+  margin-top: 50px;
+  font-size: 2.5rem;
+  color: #ff69b4;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  z-index: 10;
+  position: relative;
+}
+
+/* GIFT BOX */
+.gift-box {
+  width: 180px;
+  height: 180px;
+  background: #ff69b4;
+  margin: 50px auto;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 0 25px rgba(255,105,180,0.7);
+  z-index: 10;
+}
+.gift-box .ribbon {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  background: #fff;
+  top: 80px;
+  left: 0;
+  border-radius: 5px;
+}
+
+/* BUTTONS */
+button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  background: #ff1493;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 12px #ff69b4;
+  margin-top: 15px;
+  position: relative;
+  z-index: 20; /* ensures button is always on top */
+}
+
+/* SURPRISE TEXT */
+.surprise {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 1s ease-out;
+  margin-top: 30px;
+}
+.surprise.show {
+  opacity: 1;
+  transform: scale(1);
+}
+.surprise h2 {
+  font-size: 2rem;
+  color: #ff1493;
+  font-weight: 700;
+}
+.surprise p {
+  font-size: 1.2rem;
+  color: #ff69b4;
+}
+
+/* SCATTER PHOTOS */
+.photo-scatter {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+}
+.polaroid {
+  position: absolute;
+  width: 180px;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  border-radius: 8px;
+  transform: rotate(0deg);
+  transition: transform 1s;
+}
+.polaroid img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* FLOATING STARS & HEARTS */
+.heart, .star {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  animation: floatUp 5s linear infinite;
+}
+.heart {
+  background: red;
+  transform: rotate(45deg);
+}
+.heart::before, .heart::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: red;
+  border-radius: 50%;
+}
+.star {
+  background: yellow;
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
+    50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+  );
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
+}
+
+/* RESPONSIVE FOR MOBILE */
+@media (max-width: 600px) {
+  .polaroid {
+    width: 120px;
+    padding: 6px;
+  }
+  .photo-scatter {
+    height: 50vh;
+  }
+  .surprise h2 { font-size: 1.5rem; }
+  .surprise p { font-size: 1rem; }
+  button { font-size: 1rem; padding: 10px 20px; }
+}
