@@ -4,30 +4,27 @@ const surprise = document.getElementById("surprise");
 const bgMusic = document.getElementById("bgMusic");
 const noteBtn = document.getElementById("noteBtn");
 
-// FLOATING HEARTS & STARS
+// Floating stars & hearts
 function createFloating() {
   const el = document.createElement("div");
-  el.className = Math.random() < 0.4 ? "heart" : "star";
+  el.className = Math.random() > 0.5 ? "star" : "heart";
   el.style.left = Math.random() * window.innerWidth + "px";
-  el.style.bottom = "-30px";
+  el.style.top = window.innerHeight + "px";
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 6000);
 }
-setInterval(createFloating, 600);
+setInterval(createFloating, 250);
 
-// OPEN GIFT
+// Open gift
 openBtn.addEventListener("click", () => {
-  confetti({ particleCount: 350, spread: 140, origin: { y: 0.6 } });
-  confetti({ particleCount: 200, spread: 110, origin: { y: 0.6 } });
-
-  surprise.classList.add("show");
-  openBtn.style.display = "none";
-  giftBox.style.display = "none";
-
+  confetti({ particleCount: 400, spread: 160 });
   bgMusic.play().catch(() => {});
+
+  document.querySelector(".hero").style.display = "none";
+  surprise.classList.add("show");
 });
 
-// NOTE
+// Note
 noteBtn.addEventListener("click", () => {
-  alert("🎉 Happy Birthday Wahida! ERROR: Missing item (your smile)");
+  alert("🎉 Happy Birthday Wahida!\nERROR: missing item - (your smile) ");
 });
