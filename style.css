@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: url('images/bg.jpg') center/cover no-repeat;
+  background: url('images/bg.jpg') center/cover no-repeat fixed;
   text-align: center;
   overflow-x: hidden;
   color: #fff;
@@ -9,13 +9,13 @@ body {
 
 /* TITLE */
 .intro-text {
-  margin-top: 50px;
-  font-size: 2.5rem;
+  margin-top: 40px;
+  font-size: 2.8rem;
   color: #ff69b4;
   font-weight: 600;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  z-index: 10;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
   position: relative;
+  z-index: 10;
 }
 
 /* GIFT BOX */
@@ -23,11 +23,10 @@ body {
   width: 180px;
   height: 180px;
   background: #ff69b4;
-  margin: 50px auto;
+  margin: 40px auto;
   border-radius: 20px;
   position: relative;
-  box-shadow: 0 0 25px rgba(255,105,180,0.7);
-  z-index: 10;
+  box-shadow: 0 0 30px rgba(255,105,180,0.8);
 }
 .gift-box .ribbon {
   position: absolute;
@@ -36,31 +35,30 @@ body {
   background: #fff;
   top: 80px;
   left: 0;
-  border-radius: 5px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 button {
-  padding: 15px 30px;
+  padding: 15px 35px;
   font-size: 1.2rem;
   cursor: pointer;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   background: #ff1493;
   color: #fff;
   font-weight: 700;
-  box-shadow: 0 0 12px #ff69b4;
-  margin-top: 15px;
+  box-shadow: 0 0 15px #ff69b4;
+  margin-bottom: 30px;
   position: relative;
-  z-index: 20; /* ensures button is always on top */
+  z-index: 20;
 }
 
 /* SURPRISE TEXT */
 .surprise {
   opacity: 0;
-  transform: scale(0.5);
-  transition: all 1s ease-out;
-  margin-top: 30px;
+  transform: scale(0.6);
+  transition: all 1s ease;
+  margin: 20px auto;
 }
 .surprise.show {
   opacity: 1;
@@ -69,55 +67,64 @@ button {
 .surprise h2 {
   font-size: 2rem;
   color: #ff1493;
-  font-weight: 700;
 }
 .surprise p {
   font-size: 1.2rem;
-  color: #ff69b4;
+  color: #ffb6c1;
 }
 
-/* SCATTER PHOTOS */
+/* PHOTO AREA — FULL & BALANCED */
 .photo-scatter {
   position: relative;
   width: 100%;
-  height: 60vh;
-}
-.polaroid {
-  position: absolute;
-  width: 180px;
-  padding: 10px;
-  background: #fff;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-  border-radius: 8px;
-  transform: rotate(0deg);
-  transition: transform 1s;
-}
-.polaroid img {
-  width: 100%;
-  border-radius: 4px;
+  height: 80vh;
+  margin-top: 40px;
 }
 
-/* FLOATING STARS & HEARTS */
+/* POLAROID STYLE */
+.polaroid {
+  position: absolute;
+  width: 220px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.45);
+  transition: transform 0.4s ease;
+}
+
+.polaroid img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* DESKTOP POSITIONS (SCATTERED, NOT A LINE) */
+.p1 { top: 5%;  left: 8%;  transform: rotate(-6deg); }
+.p2 { top: 0%;  left: 38%; transform: rotate(3deg); }
+.p3 { top: 32%; left: 18%; transform: rotate(-3deg); }
+.p4 { top: 28%; left: 58%; transform: rotate(4deg); }
+.p5 { top: 60%; left: 40%; transform: rotate(-5deg); }
+
+/* FLOATING EFFECTS */
 .heart, .star {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  animation: floatUp 5s linear infinite;
+  width: 22px;
+  height: 22px;
+  animation: floatUp 6s linear infinite;
 }
 .heart {
-  background: red;
+  background: #ff1493;
   transform: rotate(45deg);
 }
 .heart::before, .heart::after {
   content: '';
   position: absolute;
-  width: 24px;
-  height: 24px;
-  background: red;
+  width: 22px;
+  height: 22px;
+  background: #ff1493;
   border-radius: 50%;
 }
 .star {
-  background: yellow;
+  background: gold;
   clip-path: polygon(
     50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
     50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
@@ -125,20 +132,22 @@ button {
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(0) rotate(0); opacity: 1; }
-  100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
+  from { transform: translateY(0) rotate(0deg); opacity: 1; }
+  to { transform: translateY(-700px) rotate(360deg); opacity: 0; }
 }
 
-/* RESPONSIVE FOR MOBILE */
-@media (max-width: 600px) {
+/* MOBILE */
+@media (max-width: 768px) {
+  .photo-scatter { height: 90vh; }
+
   .polaroid {
-    width: 120px;
-    padding: 6px;
+    width: 150px;
+    padding: 8px;
   }
-  .photo-scatter {
-    height: 50vh;
-  }
-  .surprise h2 { font-size: 1.5rem; }
-  .surprise p { font-size: 1rem; }
-  button { font-size: 1rem; padding: 10px 20px; }
+
+  .p1 { top: 0%;  left: 10%; }
+  .p2 { top: 0%;  left: 55%; }
+  .p3 { top: 32%; left: 8%; }
+  .p4 { top: 32%; left: 55%; }
+  .p5 { top: 65%; left: 30%; }
 }
