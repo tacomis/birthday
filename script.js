@@ -13,12 +13,12 @@ function createFloating() {
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 6000);
 }
-setInterval(createFloating, 250);
+setInterval(createFloating, 600);
 
 // OPEN GIFT
 openBtn.addEventListener("click", () => {
-  confetti({ particleCount: 400, spread: 150, origin: { y: 0.6 } });
-  confetti({ particleCount: 250, spread: 120, origin: { y: 0.6 } });
+  confetti({ particleCount: 350, spread: 140, origin: { y: 0.6 } });
+  confetti({ particleCount: 200, spread: 110, origin: { y: 0.6 } });
 
   surprise.classList.add("show");
   openBtn.style.display = "none";
@@ -29,5 +29,5 @@ openBtn.addEventListener("click", () => {
 
 // NOTE
 noteBtn.addEventListener("click", () => {
-  alert("🎉 Happy Birthday Wahida! ERROR: Missing item (your smile) 😄 💖");
+  alert("🎉 Happy Birthday Wahida! ERROR: Missing item (your smile)");
 });

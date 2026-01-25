@@ -44,8 +44,8 @@ button {
   cursor: pointer;
   box-shadow: 0 0 15px #ff69b4;
   margin: 20px 0;
-  z-index: 20;
   position: relative;
+  z-index: 10;
 }
 
 /* SURPRISE */
@@ -65,51 +65,74 @@ button {
   color: #ffb6c1;
 }
 
-/* PHOTO AREA */
-.photo-scatter {
+/* PHOTO STAGE – FILLS SCREEN */
+.photo-stage {
   position: relative;
   width: 100%;
-  height: 80vh;
-  margin-top: 40px;
+  height: 85vh;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* POLAROIDS */
+/* POLAROID */
 .polaroid {
   position: absolute;
-  width: 220px;
-  padding: 12px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.45);
+  width: 240px;
+  padding: 14px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+  transition: transform 0.4s ease;
 }
+
 .polaroid img {
   width: 100%;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
-/* SCATTERED POSITIONS */
-.p1 { top: 5%; left: 8%; transform: rotate(-6deg); }
-.p2 { top: 0%; left: 38%; transform: rotate(3deg); }
-.p3 { top: 35%; left: 18%; transform: rotate(-3deg); }
-.p4 { top: 30%; left: 58%; transform: rotate(4deg); }
-.p5 { top: 65%; left: 40%; transform: rotate(-5deg); }
+/* INTENTIONAL COLLAGE */
+.p3 {
+  z-index: 5;
+  transform: translateY(-20px) rotate(-2deg);
+}
+.p1 {
+  transform: translate(-260px, -120px) rotate(-6deg);
+}
+.p2 {
+  transform: translate(260px, -120px) rotate(6deg);
+}
+.p4 {
+  transform: translate(-220px, 160px) rotate(4deg);
+}
+.p5 {
+  transform: translate(220px, 160px) rotate(-5deg);
+}
 
-/* FLOATING EFFECTS */
+/* HOVER EFFECT */
+.polaroid:hover {
+  transform: scale(1.05) rotate(0deg);
+  z-index: 10;
+}
+
+/* FLOATING STARS & HEARTS */
 .heart, .star {
   position: absolute;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   animation: floatUp 6s linear infinite;
 }
 .heart {
   background: #ff1493;
   transform: rotate(45deg);
 }
-.heart::before, .heart::after {
+.heart::before,
+.heart::after {
   content: '';
   position: absolute;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   background: #ff1493;
   border-radius: 50%;
 }
@@ -128,11 +151,15 @@ button {
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .photo-scatter { height: 90vh; }
-  .polaroid { width: 150px; }
-  .p1 { top: 0%; left: 10%; }
-  .p2 { top: 0%; left: 55%; }
-  .p3 { top: 32%; left: 8%; }
-  .p4 { top: 32%; left: 55%; }
-  .p5 { top: 65%; left: 30%; }
+  .photo-stage {
+    height: 100vh;
+  }
+  .polaroid {
+    width: 160px;
+  }
+  .p1 { transform: translate(-120px, -160px) rotate(-5deg); }
+  .p2 { transform: translate(120px, -160px) rotate(5deg); }
+  .p3 { transform: translate(0, -20px) rotate(-2deg); }
+  .p4 { transform: translate(-100px, 180px) rotate(4deg); }
+  .p5 { transform: translate(100px, 180px) rotate(-4deg); }
 }
